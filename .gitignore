@@ -32,3 +32,6 @@ pnpm-debug.log*
 *.tmp
 .cache/
 .temp/
+
+# Test requests
+server/requests.rest
