@@ -1,7 +1,18 @@
+POST http://localhost:3000/signup
+Content-Type: application/json
+
+{
+    "fullname": "ayane takagi",
+    "email": "ayane4@gmail.com",
+    "password": "Ayane1"
+}
+
+###
+
 POST http://localhost:3000/signin
 Content-Type: application/json
 
 {
-    "email": "kunaa@gmail.com",
-    "password": "Kunaal"
+    "email": "aya@gmail.com",
+    "password": "Ayane1"
 }
