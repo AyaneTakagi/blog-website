@@ -35,3 +35,6 @@ pnpm-debug.log*
 
 # Test requests
 server/requests.rest
+
+# Firebase service account key (never commit this file)
+server/react-js-blog-website-d0c74-firebase-adminsdk-fbsvc-03de07d42c.json
