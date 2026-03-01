@@ -16,3 +16,7 @@ Content-Type: application/json
     "email": "test@example.com",
     "password": "Test1"
 }
+
+###
+
+GET http://localhost:3000/get-upload-url
