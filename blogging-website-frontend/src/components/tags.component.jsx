@@ -1,71 +1,49 @@
-// importing tools
+import { useContext } from "react";
+import { EditorContext } from "../pages/editor.pages";
 
-import Embed from "@editorjs/embed";
-import List from "@editorjs/list";
-import Image from "@editorjs/image";
-import Header from "@editorjs/header";
-import Quote from "@editorjs/quote";
-import Marker from "@editorjs/marker";
-import InlineCode from "@editorjs/inline-code";
+const Tag = ({ tag, tagIndex }) => {
 
-import { uploadImage } from "../common/aws";
+    let { blog, blog: { tags }, setBlog } = useContext(EditorContext);
 
-const uploadImageByFile = (e) => {
-    return uploadImage(e).then(url => {
-        if (url) {
-            return {
-                success: 1,
-                file: { url }
-            }
+    const addEditable = (e) => {
+        e.target.setAttribute("contentEditable", true);
+        e.target.focus();
+    }
+
+    const handleTagEdit = (e) => {
+        if (e.keyCode == 13 || e.keyCode == 188) { // enter key or comma
+
+            e.preventDefault();
+
+            let currentTag = e.target.innerText;
+
+            tags[tagIndex] = currentTag;
+
+            setBlog({ ...blog, tags });
+
+            e.target.setAttribute("contentEditable", false);
+
         }
-    })
+    }
+
+    const handleTagDelete = () => {
+
+        tags = tags.filter(t => t != tag);
+        setBlog({ ...blog, tags });
+
+    }
+
+    return (
+        <div className="relative p-2 mt-2 mr-2 px-5 bg-white rounded-full inline-block hover:bg-opacity-50 pr-10">
+            <p className="outline-none" onKeyDown={handleTagEdit} onClick={addEditable}>{ tag }</p>
+            <button
+                className="mt-[2px] rounded-full absolute right-3 top-1/2 -translate-y-1/2"
+                onClick={handleTagDelete}
+            >
+                <i className="fi fi-br-cross text-sm pointer-events-none"></i>
+            </button>
+        </div>
+    )
 }
 
-const uploadImageByUrl = (e) => {
-    let link = new Promise(( resolve, reject ) => {
-        try {
-            resolve(e);
-        }
-        catch(err) {
-            reject(err);
-        }
-    })
-
-    return link.then(url => {
-        return {
-            success: 1,
-            file: { url }
-        }
-    })
-}
-
-export const tools = {
-    embed: Embed,
-    list: {
-        class: List,
-        inlineToolbar: true
-    },
-    image: {
-        class: Image,
-        config: {
-            uploader: {
-                uploadByUrl: uploadImageByUrl,
-                uploadByFile: uploadImageByFile
-            }
-        }
-    },
-    header: {
-        class: Header,
-        config: {
-            placeholder: "Type Heading...",
-            levels: [2, 3],
-            defaultLevel: 2
-        }
-    },
-    quote: {
-        class: Quote,
-        inlineToolbar: true
-    },
-    marker: Marker,
-    inlineCode: InlineCode
-}
+export default Tag;
