@@ -7,6 +7,7 @@ import BlogPostCard from "../components/blog-post.component";
 import NoDataMessage from "../components/nodata.component";
 import axios from "axios";
 import { filterPaginationData } from "../common/filter-pagination-data";
+import LoadMoreDataBtn from "../components/load-more.component";
 
 const SearchPage = () => {
 
@@ -64,7 +65,7 @@ const SearchPage = () => {
                                 })
                             : <NoDataMessage message="No blogs published" />
                         }
-                        {/* <LoadMoreDataBtn state={blogs} fetchDataFun={} /> */}
+                        <LoadMoreDataBtn state={blogs} fetchDataFun={searchBlogs} />
                     </>
 
                 </InPageNavigation>
