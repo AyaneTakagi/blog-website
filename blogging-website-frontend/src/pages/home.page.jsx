@@ -118,7 +118,7 @@ const HomePage = () => {
                                     })
                                 : <NoDataMessage message="No blogs published" />
                             }
-                            <LoadMoreDataBtn state={blogs} fetchDataFun={fetchLatestBlogs} />
+                            <LoadMoreDataBtn state={blogs} fetchDataFun={( pageState == "home" ? fetchLatestBlogs : fetchBlogByCategory )} />
                         </>
 
                         {
