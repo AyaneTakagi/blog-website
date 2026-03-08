@@ -16,7 +16,7 @@ import User from "./Schema/User.js";
 import Blog from "./Schema/Blog.js";
 
 const server = express();
-let PORT = 3000;
+const PORT = process.env.PORT || 3000;
 
 admin.initializeApp({
     credential: admin.credential.cert(serviceAccountKey)
