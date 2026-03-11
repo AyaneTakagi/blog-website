@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { BlogContext } from "../pages/blog.page";
 import { Link } from "react-router-dom";
 import { UserContext } from "../App";
+import { FaXTwitter } from "react-icons/fa6";
 
 const BlogInteraction = () => {
 
@@ -33,7 +34,14 @@ const BlogInteraction = () => {
                         <Link to={`/editor/${blog_id}`} className="underline hover:text-purple">Edit</Link> : ""
                     }
 
-                    <Link to={`https://twitter.com/intent/tweet?text=Read ${title}&url=${location.href}`}><i className="fi fi-rr-share text-xl hover:text-twitter"></i></Link>
+                    <a
+                        href={`https://twitter.com/intent/tweet?text=Read ${title}&url=${window.location.href}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                    >
+                        <FaXTwitter className="text-xl hover:text-twitter" />
+                    </a>
+
                 </div>
             </div>
 
