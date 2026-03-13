@@ -493,7 +493,7 @@ server.post("/like-blog", verifyJWT, (req, res) => {
             let like = new Notification({
                 type: "like",
                 blog: _id,
-                notification: blog.author,
+                notification_for: blog.author,
                 user: user_id
             })
 
