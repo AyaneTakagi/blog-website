@@ -500,6 +500,16 @@ server.post("/like-blog", verifyJWT, (req, res) => {
             like.save().then(notification => {
                 return res.status(200).json({ liked_by_user: true });
             })
+        } else {
+
+            Notification.findOneAndDelete({ user: user_id, blog: _id, type: "like" })
+            .then(data => {
+                return res.status(200).json({ liked_by_user: false });
+            })
+            .catch(err => {
+                return res.status(500).json({ "error": err.message });
+            })
+
         }
 
     })

@@ -21,7 +21,7 @@ const BlogInteraction = () => {
                 }
             })
             .then(({ data: { result } }) => {
-                console.log(result);
+                setLikedByUser(Boolean(result));
             })
             .catch(err => {
                 console.log(err);
