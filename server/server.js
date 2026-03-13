@@ -14,6 +14,7 @@ const serviceAccountKey = JSON.parse(process.env.FIREBASE_SERVICE_ACCOUNT);
 // schema below
 import User from "./Schema/User.js";
 import Blog from "./Schema/Blog.js";
+import Notification from './Schema/Notification.js';
 
 const server = express();
 const PORT = process.env.PORT || 3000;
@@ -473,6 +474,34 @@ server.post("/get-blog", (req, res) => {
     })
     .catch(err => {
         return res.status(500).json({ "error": err.message });
+    })
+
+})
+
+server.post("/like-blog", verifyJWT, (req, res) => {
+
+    let user_id = req.user;
+
+    let { _id, islikedByUser } = req.body;
+
+    let incrementVal = !islikedByUser ? 1 : -1;
+
+    Blog.findOneAndUpdate({ _id }, { $inc: { "activity.total_likes": incrementVal } })
+    .then(blog => {
+
+        if (!islikedByUser) {
+            let like = new Notification({
+                type: "like",
+                blog: _id,
+                notification: blog.author,
+                user: user_id
+            })
+
+            like.save().then(notification => {
+                return res.status(200).json({ liked_by_user: true });
+            })
+        }
+
     })
 
 })
