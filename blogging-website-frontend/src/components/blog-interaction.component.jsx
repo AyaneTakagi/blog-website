@@ -21,6 +21,7 @@ const BlogInteraction = () => {
                 }
             })
             .then(({ data: { result } }) => {
+                // console.log(result);
                 setLikedByUser(Boolean(result));
             })
             .catch(err => {
@@ -31,12 +32,16 @@ const BlogInteraction = () => {
     }, [])
 
     const handleLike = () => {
+        // FIXME: Render環境で Unlike 時に数値が増えるバグあり。
+        // 原因: ReactのState更新(非同期)とaxios送信のタイミングのズレ。
+        // 全機能完成後に、最新のStateを参照するようにロジックを修正すること。
 
         if (access_token) {
             // like the blog
             setLikedByUser(preVal => !preVal);
 
             !isLikedByUser ? total_likes++ : total_likes--;
+            // console.log(isLikedByUser);
 
             setBlog({ ...blog, activity: { ...activity, total_likes } });
 

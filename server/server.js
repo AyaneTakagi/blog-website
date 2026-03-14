@@ -482,14 +482,14 @@ server.post("/like-blog", verifyJWT, (req, res) => {
 
     let user_id = req.user;
 
-    let { _id, islikedByUser } = req.body;
+    let { _id, isLikedByUser } = req.body;
 
-    let incrementVal = !islikedByUser ? 1 : -1;
+    let incrementVal = !isLikedByUser ? 1 : -1;
 
     Blog.findOneAndUpdate({ _id }, { $inc: { "activity.total_likes": incrementVal } })
     .then(blog => {
 
-        if (!islikedByUser) {
+        if (!isLikedByUser) {
             let like = new Notification({
                 type: "like",
                 blog: _id,
@@ -504,9 +504,11 @@ server.post("/like-blog", verifyJWT, (req, res) => {
 
             Notification.findOneAndDelete({ user: user_id, blog: _id, type: "like" })
             .then(data => {
+                // console.log("DELETED:", data);
                 return res.status(200).json({ liked_by_user: false });
             })
             .catch(err => {
+                // console.log("DELETE ERROR:", err);
                 return res.status(500).json({ "error": err.message });
             })
 
