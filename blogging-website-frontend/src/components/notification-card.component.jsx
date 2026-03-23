@@ -36,7 +36,7 @@ const NotificationCard = ({ data, index, notificationState }) => {
             }
 
             target.removeAttribute("disabled");
-            setNotifications({ ...notifications, results, totalDocs: totalDocs - 1, deleteDocCount: notifications.deleteDocCount + 1 });
+            setNotifications({ ...notifications, results, totalDocs: totalDocs - 1, deletedDocCount: notifications.deletedDocCount + 1 });
         })
         .catch(err => {
             console.log(err);
