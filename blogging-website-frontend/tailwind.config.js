@@ -4,14 +4,14 @@ export default {
     theme: {
 
         colors: {
-            'white': '#FFFFFF',
-            'black': '#242424',
-            'grey': '#F3F3F3',
-            'dark-grey': '#6B6B6B',
-            'red': '#FF4E4E',
-            'transparent': 'transparent',
-            'twitter': '#1DA1F2',
-            'purple': '#8B46FF'
+            white: "#242424",
+            black: "#F5F5F5",
+            grey: "#2E2E2E",
+            "dark-grey": "#A3A3A3",
+            red: "#FF6B6B",
+            transparent: "transparent",
+            twitter: "#1DA1F2",
+            purple: "#A78BFA"
         },
 
         fontSize: {
