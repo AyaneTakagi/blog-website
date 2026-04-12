@@ -7,10 +7,10 @@ import axios from "axios";
 const BlogStats = ({ stats }) => {
 
     return (
-        <div className="flex gap-2 max-lg:mb-6 max-lg:pb-6 border-grey max-lg:border-b">
+        <div className="flex gap-2 max-lg:mb-6 max-lg:pb-6 border-dark-grey/30 max-lg:border-b">
             {
                 Object.keys(stats).map((key, i) => {
-                    return !key.includes("parent") ? <div key={i} className={"flex flex-col items-center w-full h-full justify-center p-4 px-6 " + (i != 0 ? " border-grey border-l " : "")}>
+                    return !key.includes("parent") ? <div key={i} className={"flex flex-col items-center w-full h-full justify-center p-4 px-6 " + (i != 0 ? " border-dark-grey/30 border-l " : "")}>
                         <h1 className="text-xl lg:text-2xl mb-2">{stats[key].toLocaleString()}</h1>
                         <p className="max-lg:text-dark-grey capitalize">{key.split("_")[1]}</p>
                     </div> : ""
@@ -32,7 +32,7 @@ export const ManagePublishedBlogCard = ({ blog }) => {
 
     return (
         <>
-            <div className="flex gap-10 border-b mb-6 max-md:px-4 border-grey pb-6 items-center">
+            <div className="flex gap-10 border-b mb-6 max-md:px-4 border-dark-grey/30 pb-6 items-center">
 
                 <img src={banner} className="max-md:hidden lg:hidden xl:block w-28 h-28 flex-none bg-grey object-cover" />
 
@@ -74,7 +74,7 @@ export const ManageDraftBlogPost = ({ blog }) => {
     index++;
 
     return (
-        <div className="flex gap-5 lg:gap-10 pb-6 border-b mb-6 border-grey">
+        <div className="flex gap-5 lg:gap-10 pb-6 border-b mb-6 border-dark-grey/30">
 
             <h1 className="blog-index text-center pl-4 md:pl-6 flex-none">{ index < 10 ? "0" + index : index }</h1>
 

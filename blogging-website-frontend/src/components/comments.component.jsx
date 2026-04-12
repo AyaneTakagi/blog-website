@@ -57,7 +57,7 @@ const CommentsContainer = () => {
                     <i className="fi fi-rr-cross-circle text-3xl mt-1"></i>
                 </button>
 
-                <hr className="border-grey my-8 w-[120%] -ml-10" />
+                <hr className="border-dark-grey/30 my-8 w-[120%] -ml-10" />
 
                 <CommentField action="comment" />
 

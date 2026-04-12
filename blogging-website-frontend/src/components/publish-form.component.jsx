@@ -136,7 +136,7 @@ const PublishForm = () => {
                     <p className="font-gelasio line-clamp-2 text-xl leading-7 mt-4">{ des }</p>
                 </div>
 
-                <div className="border-grey lg:border-1 lg:pl-8">
+                <div className="border-dark-grey/30 lg:border-1 lg:pl-8">
                     <p className="text-dark-grey mb-2 mt-9">Blog Title</p>
                     <input type="text" placeholder="Blog Title" defaultValue={title} className="input-box pl-4" onChange={handleBlogTitleChange} />
 

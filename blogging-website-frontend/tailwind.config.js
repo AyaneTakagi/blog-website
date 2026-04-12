@@ -6,12 +6,12 @@ export default {
         colors: {
             white: "#242424",
             black: "#F5F5F5",
-            grey: "#2E2E2E",
-            "dark-grey": "#A3A3A3",
+            grey: "#353535",
+            "dark-grey": "#C2C2C2",
             red: "#FF6B6B",
             transparent: "transparent",
             twitter: "#1DA1F2",
-            purple: "#A78BFA"
+            purple: "#C4B5FD"
         },
 
         fontSize: {
