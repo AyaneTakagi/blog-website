@@ -181,7 +181,7 @@ const BlogEditor = () => {
                 <section>
                     <div className="mx-auto max-w-[900px] w-full">
 
-                        <div className="relative aspect-video hover:opacity-80 bg-white border-4 border-grey">
+                        <div className="relative aspect-video hover:opacity-80 bg-white border-4 border-dark-grey/30">
                             <label htmlFor="uploadBanner">
                                 <img
                                     src={banner}

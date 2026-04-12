@@ -16,7 +16,7 @@ const HomePage = () => {
     let [ trendingBlogs, setTrendingBlog ] = useState(null);
     let [ pageState, setPageState ] = useState("home");
 
-    let categories = ["travel", "japan", "cafes", "study", "exams", "productivity", "culture", "new year"];
+    let categories = ["computer science", "unideb", "debrecen", "budapest", "campus", "travel", "study", "abroad"];
 
     const fetchLatestBlogs = ({page = 1}) => {
         axios.post(import.meta.env.VITE_SERVER_DOMAIN + "/latest-blogs", { page })
@@ -134,7 +134,7 @@ const HomePage = () => {
                 </div>
 
                 {/* filters and trending blogs */}
-                <div className="min-w-[40%] lg:min-w-[400px] max-w-min border-1 border-grey pl-8 pt-3 max-md:hidden">
+                <div className="min-w-[40%] lg:min-w-[400px] max-w-min border-l border-dark-grey/30 pl-8 pt-3 max-md:hidden">
                     <div className="flex flex-col gap-10">
 
                         <div>
